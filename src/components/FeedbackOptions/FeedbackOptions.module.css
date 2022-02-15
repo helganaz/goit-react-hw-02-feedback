@@ -1,0 +1,16 @@
+.button {
+  width: 70px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.button:not(:last-child) {
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: rgb(88, 207, 223);
+}
