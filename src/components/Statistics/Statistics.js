@@ -3,9 +3,9 @@ import Notification from '../Notification';
 import s from './Statistics.module.css'
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
-    
-    if (total > 0) {
-        return (
+    return (
+        total > 0
+            ? (
         <ul>
             <li className={s.stat}>Good: {good} </li>
             <li className={s.stat}>Neutral: {neutral} </li>
@@ -13,10 +13,9 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
             <li className={s.stat}>Total: {total}</li>
             <li className={s.stat}>Positive feedback: {positivePercentage}%</li>
         </ul>
-    ) 
-    } else {
-    return <Notification message="No feedback given" />;
-  }
+            ) 
+            : <Notification message="No feedback given" />
+    )
 }
 
 Statistics.propTypes = {
