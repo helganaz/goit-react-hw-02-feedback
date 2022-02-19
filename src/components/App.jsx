@@ -11,26 +11,10 @@ class App extends Component {
   bad: 0
   }
 
-  handleIncrementGood = () => {
+  handleBtnClick = type => {
     this.setState((prevState) => {
       return {
-        good: prevState.good + 1,
-      }
-    });
-  }
-
-  handleIncrementNeutral = () => {
-    this.setState((prevState) => {
-      return {
-        neutral: prevState.neutral + 1,
-      }
-    });
-  }
-
-  handleIncrementBad = () => {
-    this.setState((prevState) => {
-      return {
-        bad: prevState.bad + 1,
+        [type]: prevState[type] + 1,
       }
     });
   }
@@ -44,9 +28,8 @@ class App extends Component {
         <div>
           <Section title='Please, leave feedback'>
             <FeedbackOptions
-              onIncrementGood={this.handleIncrementGood}
-              onIncrementNeutral={this.handleIncrementNeutral}
-              onIncrementBad={this.handleIncrementBad}
+              options={Object.keys(this.state)}
+              onHandleBtnClick={this.handleBtnClick}
             />
           </Section>
           
@@ -62,9 +45,8 @@ class App extends Component {
 
           {/* Всё в одном компоненте */}
           {/* <Feedback
-            onIncrementGood={this.handleIncrementGood}
-            onIncrementNeutral={this.handleIncrementNeutral}
-            onIncrementBad={this.handleIncrementBad}
+            onHandleBtnClick={this.handleBtnClick}
+            options={ ['good', 'neutral', 'bad' ]}
             value={this.state}
             total={countTotalFeedback}
             positivePercentage={countPositiveFeedbackPercentage}

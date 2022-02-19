@@ -1,15 +1,20 @@
 import s from './Feedback.module.css'
 
-const Feedback = ({onIncrementGood, onIncrementNeutral, onIncrementBad, value, total, positivePercentage }) => {
+const Feedback = ({onHandleBtnClick, options, value, total, positivePercentage }) => {
     
     return (
         <div className={s.container}>
         <h3>Please, leave feedback</h3>
-        <div>
-            <button className={s.button} onClick={onIncrementGood}>Good</button>
-            <button className={s.button} onClick={onIncrementNeutral}>Neutral</button>
-            <button className={s.button} onClick={onIncrementBad}>Bad</button>
-        </div>
+            <div>
+                 {options.map(option => (
+                    <button
+                    className={s.button}
+                    key={option}
+                    onClick={() => onHandleBtnClick(option)}>
+                    {option}
+                    </button>
+                ))}
+            </div>
         <h3>Statistics</h3>
         <ul>
             <li>Good: {value.good} </li>
